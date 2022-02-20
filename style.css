@@ -7,17 +7,7 @@ body {
   padding: 0%;
 }
 .wrapper {
-  background: linear-gradient(
-    to right,
-    rgb(64, 255, 0),
-    white,
-    orange,
-    red,
-    white,
-    blue,
-    green,
-    white
-  );
+  background: linear-gradient(to right, rgb(255, 81, 0), rgb(54, 6, 177));
   align-items: center;
   min-height: 100vh;
   display: flex;
@@ -29,7 +19,7 @@ body {
 
 .mainParent {
   width: 350px;
-  background:linear-gradient(rgb(214, 6, 6), green, black)
+  background: linear-gradient(rgb(214, 6, 6), green, black);
   padding: 1rem;
   border: 25px;
   box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.25);

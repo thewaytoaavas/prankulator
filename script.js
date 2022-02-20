@@ -1,6 +1,8 @@
 const buttons = document.querySelectorAll("button");
 const displayElm = document.querySelector("#result");
+
 const symbols = ["+", "-", "*", "/"];
+
 let textToDisplay = "";
 
 buttons.forEach((btn) => {
@@ -8,7 +10,7 @@ buttons.forEach((btn) => {
     const val = btn.innerText;
     const lastChar = textToDisplay[textToDisplay.length - 1];
 
-    displayElm.style.backgroundcolor = "";
+    displayElm.style.backgroundColor = "";
     displayElm.style.color = "";
 
     //not letting to add double dot
@@ -25,18 +27,19 @@ buttons.forEach((btn) => {
 
     //AC clear everything from the display
     if (val === "AC") {
+      alert("KJk");
       return resetDisplay();
     }
 
     //shows the total calculated value
     if (val === "=") {
-      {
+      if (symbols.includes(lastChar)) {
         textToDisplay = textToDisplay.slice(0, -1);
       }
-      if (symbols.includes(lastChar)) return onTotal();
+      return onTotal();
     }
     //
-    if (val === "c") {
+    if (val === "C") {
       textToDisplay = textToDisplay.slice(0, -1);
       return display(textToDisplay);
     }
@@ -55,15 +58,17 @@ const onTotal = () => {
 
   if (prankNum > 0) {
     //do some animated or something
-    displayElm.style.backgroundcolor = "red";
+    displayElm.style.backgroundColor = "red";
     displayElm.style.color = "white";
+
+    //Animation
+    displayElm.classList.add("prank");
+
+    //remove the class name after animation endless
+    displayElm.addEventListener("animationend", () =>
+      displayElm.classList.remove("prank")
+    );
   }
-
-  //Animation
-  displayElm.classList.add("prank");
-
-  //remove the class name after animation endless
-  displayElm.classList.remove("prank");
 
   const total = eval(textToDisplay) + prankNum;
   console.log(prankNum);
@@ -73,12 +78,12 @@ const onTotal = () => {
 };
 
 const resetDisplay = () => {
-  display("0.00");
+  display(textToDisplay);
   textToDisplay = "";
 };
 
 const randomNumber = () => {
-  const num = math.round(math.random() * 10); //0-10
-  console.log(num, "from randomNumber");
+  const num = Math.round(Math.random() * 10); //0-10
+  //   console.log(num, "from randomNumber");
   return num < 3 ? num : 0;
 };
